@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--View Readme.txt for more information on this mod.-->
+<ModMetaData>
+	<packageId>coldcrow.bettertradableitems</packageId>
+	<name>Better Tradable Items</name>
+	<author>Coldcrow</author>
+	<supportedVersions>
+		<li>1.4</li>
+		<li>1.5</li>
+		<li>1.6</li>
+	</supportedVersions>
+	<modVersion>1.4</modVersion>
+	<description>
+Better Tradable Items adjusts the tradeability value of multiple items to allow them to be bought and sold. This mod takes substantial inspiration from existing mods which do this separately for different items, and adds some items that I personally wanted to see tradable. See the credits section for more information on sources used to create this mod. 
+
+"Better Tradable Items" makes the following items buyable and sellable:
+- Stone blocks
+- Ambrosia
+- Meals
+- Serums
+- Baby Food (with biotech)
+- Subcores (with biotech)
+
+The intention of this mod is to continue adding items that the community would like to see and build one comprehensive mod for tradable items. If you would like to have an item added to this mod and see it become tradable, leave a comment on the Steam workshop page.
+	</description>
+</ModMetaData>

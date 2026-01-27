@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!--tradable baby food-->
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BabyFood"]</xpath>
+			<success>Always</success>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="BabyFood"]</xpath>
+				<value>
+					<tradeability>All</tradeability>
+				</value>
+		</match>
+	</Operation>
+	<!--tradable subcores-->
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="SubcoreBase"]</xpath>
+			<success>Always</success>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="SubcoreBase"]</xpath>
+				<value>
+					<tradeability>All</tradeability>
+				</value>
+		</match>
+	</Operation>
+</Patch>
