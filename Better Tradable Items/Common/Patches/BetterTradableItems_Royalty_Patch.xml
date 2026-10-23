@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Royalty patch.
+
+  The animus stone is a 5,000 silver quest reward building that vanilla sells but will not buy
+  back. Everything else Royalty adds is already tradeable.
+  Gated behind PatchOperationFindMod so nothing runs, and nothing errors, without the DLC.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Animus stone. Vanilla Buyable. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="AnimusStone"]/tradeability</xpath>
+          <value>
+            <tradeability>All</tradeability>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

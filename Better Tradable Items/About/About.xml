@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--View Readme.txt for more information on this mod.-->
+<!-- Mod metadata read by RimWorld. Full notes, FAQ, and changelog are in ReadMe.txt. -->
 <ModMetaData>
-	<packageId>coldcrow.bettertradableitems</packageId>
-	<name>Better Tradable Items</name>
-	<author>Coldcrow</author>
-	<supportedVersions>
-		<li>1.4</li>
-		<li>1.5</li>
-		<li>1.6</li>
-	</supportedVersions>
-	<modVersion>1.4</modVersion>
-	<description>
-Better Tradable Items adjusts the tradeability value of multiple items to allow them to be bought and sold. This mod takes substantial inspiration from existing mods which do this separately for different items, and adds some items that I personally wanted to see tradable. See the credits section for more information on sources used to create this mod. 
+  <packageId>coldcrow.bettertradableitems</packageId>
+  <name>Better Tradable Items</name>
+  <author>Coldcrow</author>
+  <url>https://steamcommunity.com/sharedfiles/filedetails/?id=3009963773</url>
+  <modVersion>2.0</modVersion>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <!-- Vanilla Gravship Expanded also sets the gravcore's tradeability, so this mod loads after it
+       and the two agree (see the Odyssey patch). The rest just keeps the mod list tidy. -->
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>Ludeon.RimWorld.Anomaly</li>
+    <li>Ludeon.RimWorld.Odyssey</li>
+    <li>Sarg.AlphaMemes</li>
+    <li>vanillaexpanded.gravship</li>
+  </loadAfter>
+  <description>Better Tradable Items fixes the items vanilla won't let you sell, and makes a short list buyable too. It borrows from existing mods that each handle one item (credited in ReadMe.txt) and adds a few I wanted tradable myself.
 
-"Better Tradable Items" makes the following items buyable and sellable:
-- Stone blocks
-- Ambrosia
+Now sellable (vanilla would not take them):
+- Stone and slag chunks. Worth next to nothing, but a ship that buys everything will haul them away
+- Stone blocks (plus Alpha Memes stone blocks)
 - Meals
-- Serums
-- Baby Food (with biotech)
-- Subcores (with biotech)
+- Gravcore (Odyssey), mechanoid transponder (Biotech), void sculpture (Anomaly), animus stone (Royalty)
+- Toxic wastepacks (Biotech), at a token value, so a ship that buys everything (the Better Orbital Traders scrapyard) will haul them away
 
-The intention of this mod is to continue adding items that the community would like to see and build one comprehensive mod for tradable items. If you would like to have an item added to this mod and see it become tradable, leave a comment on the Steam workshop page.
-	</description>
+Now buyable as well as sellable:
+- Ambrosia
+- Healer mech serum
+- Fish, psilocap, and thrumbomane (Odyssey)
+- Ghoul resurrection serum (Anomaly)
+
+The resurrector mech serum stays vanilla: sellable, never for sale. Buying resurrection changes the game's rules.
+
+Want something added? Leave a comment on the Workshop page.
+
+Vanilla Gravship Expanded makes the gravcore buyable. With it loaded the gravcore is buyable and sellable both, and this mod loads after it so the two agree.
+
+XML only, RimWorld 1.6 and 1.7, no DLC required, safe to add or remove mid-save.</description>
 </ModMetaData>

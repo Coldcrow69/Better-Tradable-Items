@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Alpha Memes compatibility.
+
+  Alpha Memes adds its own stone block types under AM_StoneBlocksBase, which carries its own
+  tradeability node (checked against the mod's source). Gated on that node existing rather than on
+  the mod's display name, like every other third-party patch in the series, so a retitled mod keeps
+  working and a removed node makes the patch do nothing (a conditional that finds nothing succeeds
+  quietly in 1.6 and 1.7; success Always only adds cover for a changed node shape). Vanilla blocks
+  go to All in the Core patch, so these do too: buyable as well as sellable.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[@Name="AM_StoneBlocksBase"]/tradeability</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[@Name="AM_StoneBlocksBase"]/tradeability</xpath>
+      <value>
+        <tradeability>All</tradeability>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

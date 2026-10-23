@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Anomaly patch.
+
+  The void sculpture is vanilla None even though the exotic trader has a buy entry for it. The
+  ghoul resurrection serum is the one Anomaly serum vanilla keeps off the shelf; the other four
+  are already buyable. Better Orbital Traders caps it on the narcotics dealer.
+  Gated behind PatchOperationFindMod so nothing runs, and nothing errors, without the DLC.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Anomaly</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Void sculpture. Vanilla None. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VoidSculpture"]/tradeability</xpath>
+          <value>
+            <tradeability>Sellable</tradeability>
+          </value>
+        </li>
+
+        <!-- Ghoul resurrection serum. Vanilla Sellable. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="GhoulResurrectionSerum"]/tradeability</xpath>
+          <value>
+            <tradeability>All</tradeability>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

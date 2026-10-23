@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Core patch.
+
+  The rule of this mod: everything a colonist can pick up is at least Sellable, and a short,
+  curated list is also Buyable (tradeability All). Ops below set one or the other on vanilla
+  defs that ship as None, Buyable, or Sellable. PatchOperationReplace applies to every node its
+  xpath matches, so defs that get the same treatment share one op. DLC defs live in their own
+  gated patch files.
+
+  Vanilla values noted per op are from 1.6 and unchanged in 1.7.
+-->
+<Patch>
+
+  <!-- Stone blocks. StoneBlocksBase is the abstract parent of every block type, vanilla Buyable.
+       Credit: Steam user Meow, "Tradable Stone Blocks". -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="StoneBlocksBase"]/tradeability</xpath>
+    <value>
+      <tradeability>All</tradeability>
+    </value>
+  </Operation>
+
+  <!-- Chunks. ChunkBase is the abstract parent of stone, slag, and (Odyssey) vacstone chunks,
+       vanilla None with no market value at all. Sellable, so a ship that buys everything (the
+       Better Orbital Traders scrapyard) hauls them away. The game only lets the player sell
+       things worth more than zero, so they get the smallest value that still trades: 0.01, a
+       silver per hundred chunks, and next to nothing added to colony wealth. Junk disposal, not
+       income. No chunk def sets its own value, so one add on the base covers them all. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="ChunkBase"]/tradeability</xpath>
+    <value>
+      <tradeability>Sellable</tradeability>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="ChunkBase"]/statBases</xpath>
+    <value>
+      <MarketValue>0.01</MarketValue>
+    </value>
+  </Operation>
+
+  <!-- Ambrosia. Vanilla Sellable. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Ambrosia"]/tradeability</xpath>
+    <value>
+      <tradeability>All</tradeability>
+    </value>
+  </Operation>
+
+  <!-- Meals. Cooked meals inherit Buyable from MealCookedIngredientless. Nutrient paste sets
+       Buyable directly and inherits from MealBase. Survival meals have no tradeability node and
+       are already All. Credit: Steam user Meow, "Tradable Meals". -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="MealCookedIngredientless" or @ParentName="MealBase"]/tradeability</xpath>
+    <value>
+      <tradeability>All</tradeability>
+    </value>
+  </Operation>
+
+  <!-- Healer mech serum. Vanilla Sellable. The resurrector serum stays vanilla on purpose: buying
+       resurrection changes the game's death rules, and any drug trader could roll one. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="MechSerumHealer"]/tradeability</xpath>
+    <value>
+      <tradeability>All</tradeability>
+    </value>
+  </Operation>
+
+</Patch>

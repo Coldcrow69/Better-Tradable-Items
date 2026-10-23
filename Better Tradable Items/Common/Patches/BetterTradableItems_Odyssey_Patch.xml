@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Odyssey patch.
+
+  Fish are a sellable-only food category; FishBase is the abstract parent of all fourteen. The
+  gravcore is the only obtainable Odyssey item vanilla marks None; its op also handles Vanilla
+  Gravship Expanded. Psilocap is the odd drug out.
+  Thrumbomane (Leather_AlphaThrumbo) becomes buyable: vanilla textile sell lines run on silver
+  budgets (settlements 400~800, the orbital bulk goods trader 2200~4000, so 20 to 200 of it at
+  20 silver a piece), outlander caravan textile lines are buy-only while the neolithic bulk goods
+  caravan sells two kinds on 200~600, and Better Orbital Traders 2.0 stocks it by the thousand on
+  its bulk goods ship. The alpha thrumbo horn stays vanilla.
+  Gated behind PatchOperationFindMod so nothing runs, and nothing errors, without the DLC.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Odyssey</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Fish. Vanilla Sellable. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[@Name="FishBase"]/tradeability</xpath>
+          <value>
+            <tradeability>All</tradeability>
+          </value>
+        </li>
+
+        <!-- Psilocap. Vanilla Sellable. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Drug_Psilocap"]/tradeability</xpath>
+          <value>
+            <tradeability>All</tradeability>
+          </value>
+        </li>
+
+        <!-- Thrumbomane. Vanilla Sellable. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Leather_AlphaThrumbo"]/tradeability</xpath>
+          <value>
+            <tradeability>All</tradeability>
+          </value>
+        </li>
+
+        <!-- Gravcore. Vanilla None. Vanilla Gravship Expanded sets it Buyable and sells it through
+             its own stock generator, which logs an error if the def is not buyable, so with VGE
+             active the two intents combine into All. VGE is detected by one of its defs rather
+             than by mod name (PatchOperationFindMod only matches display names, which can change),
+             and the conditional is quiet either way in 1.6 and 1.7 (success Always is extra
+             cover). About.xml loads this mod after VGE so this op runs last. -->
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="VGE_OxygenCanister"]</xpath>
+          <success>Always</success>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="Gravcore"]/tradeability</xpath>
+            <value>
+              <tradeability>All</tradeability>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="Gravcore"]/tradeability</xpath>
+            <value>
+              <tradeability>Sellable</tradeability>
+            </value>
+          </nomatch>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

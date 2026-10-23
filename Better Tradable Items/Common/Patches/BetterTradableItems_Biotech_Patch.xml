@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Better Tradable Items: Biotech patch.
+
+  The mechanoid transponder is the only obtainable Biotech item vanilla marks None. Toxic
+  wastepacks are tradeable on paper but worth exactly zero, which the game treats as untradeable;
+  see the op. Mechanitor implants stay sellable-only on purpose: they are crafted from boss drops.
+  Gated behind PatchOperationFindMod so nothing runs, and nothing errors, without the DLC.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Biotech</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Mechanoid transponder. Vanilla None. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="MechanoidTransponder"]/tradeability</xpath>
+          <value>
+            <tradeability>Sellable</tradeability>
+          </value>
+        </li>
+
+        <!-- Toxic wastepacks. Vanilla All, but with a market value of exactly zero, and the game
+             never lists anything worth zero for sale, so in practice they cannot be traded. 0.01 is
+             the smallest value that trades (same as chunks): a silver per hundred packs, a hundredth
+             of a silver each toward wealth. No vanilla trader has a buy line that reaches their
+             category, so only a ship that buys everything takes them (the Better Orbital Traders
+             scrapyard). Disposal, not income. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Wastepack"]/statBases/MarketValue</xpath>
+          <value>
+            <MarketValue>0.01</MarketValue>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>
